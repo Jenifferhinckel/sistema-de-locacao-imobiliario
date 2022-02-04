@@ -1,47 +1,40 @@
 <?php
 require_once("../conexao.class.php");
-class cliente{
+class imovel{
 	private $conexao;
-	private $id;
-	private $nome;
-	private $email;
-	private $telephone;
+	private $address_id;
+	private $address;
+	private $proprietario_id;
 	
 	public function __construct(){
 		$this->conexao = new conexao;
 	}
-	function setId($id){
-		$this->id = $id;
+	function setAddressId($address_id){
+		$this->address_id = $address_id;
 	}
-	function setNome($nome){
-		$this->nome = $nome;
+	function setAddress($address){
+		$this->address = $address;
 	}
-	function setEmail($email){
-		$this->email = $email;
+	function setProprietarioId($proprietario_id){
+		$this->proprietario_id = $proprietario_id;
 	}
-	function setTelephone($telephone){
-		$this->telephone = $telephone;
+	function getAddressId(){
+		return $this->address_id;
 	}
-	function getId(){
-		return $this->id;
+	function getAddress(){
+		return $this->address;
 	}
-	function getNome(){
-		return $this->nome;
+	function getProprietarioId(){
+		return $this->proprietario_id;
 	}
-	function getEmail(){
-		return $this->email;
-	}
-	function getTelephone(){
-		return $this->telephone;
-	}
-	public function cadastrar_cliente(){
-		$query = "INSERT INTO clientes VALUES(0, '".$this->nome."', '".$this->email."', '".$this->telephone."')";
+	public function cadastrar_imovel(){
+		$query = "INSERT INTO imoveis VALUES(0, '".$this->address_id."', '".$this->address."',  '".$this->proprietario_id."')";
 		$sql = $this->conexao->query($query);
 		
 		return $sql;
 	}
-	public function consulta($email){
-		$query = "SELECT * FROM clientes WHERE email = ".$email;
+	public function consulta($address_id){
+		$query = "SELECT * FROM imoveis WHERE address_id = ".$address_id;
 		$sql = $this->conexao->query($query);
 		// $tabela = '';
 		// while($result = $this->conexao->fetch($sql)){

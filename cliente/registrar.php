@@ -3,18 +3,18 @@ require_once("cliente.class.php");
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];
-$telefone = $_POST['telefone'];
+$telephone = $_POST['telephone'];
 
 $cliente = new cliente;
 
-if(empty($nome) || empty($email) || empty($telefone)){
+if(empty($nome) || empty($email) || empty($telephone)){
 	$texto = "O(s) Campo(s) obrigatório(s) não foi (foram) preenchido(s)";
 }else{
-	$consulta = $cliente->consulta();
+	$consulta = $cliente->consulta($email);
     if(empty($consulta)){
         $cliente->setNome($nome);
         $cliente->setEmail($email);
-        $cliente->setTelefone($telefone);
+        $cliente->setTelephone($telephone);
         $sql = $cliente->cadastrar_cliente();
         if($sql){
             $texto = "Cliente cadastrado com sucesso.";
@@ -22,20 +22,8 @@ if(empty($nome) || empty($email) || empty($telefone)){
             $texto = "Erro ao tentar cadastrar o cliente";
         }
     }else{
-        if($consulta->name != $nome){
-            $cliente->setNome($nome);
-            $cliente->setEmail($email);
-            $cliente->setTelefone($telefone);
-            $sql = $cliente->cadastrar_cliente();
-            if($sql){
-                $texto = "Cliente cadastrado com sucesso.";
-            }else{
-                $texto = "Erro ao tentar cadastrar o cliente";
-            }
-        }
+        $texto = "Cliente já cadastrado!";   
     }
-	
-    $consulta;
 }
 ?>
 <html>
@@ -46,12 +34,12 @@ if(empty($nome) || empty($email) || empty($telefone)){
 	<h3 align="center">Sistema de Gestão de imobiliária</h3>
 	<hr />
 	<p align="center">
-	<a href="../cliente/cadastrar.php">Cadastrar Clientes</a>
-	<a href="cadastrar.php">Cadastrar Proprietários</a>
-	<a href="cadastrar.php">Cadastrar Imovéis</a>
-	<a href="cadastrar.php">Cadastrar Contratos</a>
+	<a href="cadastrar.php">Cadastrar Clientes</a>
+	<a href="../proprietario/cadastrar.php">Cadastrar Proprietários</a>
+	<a href="../imovel/cadastrar.php">Cadastrar Imovéis</a>
+	<a href="../contrato/cadastrar.php">Cadastrar Contratos</a>
 	</p>
 	<hr />
-	<p align="center"><?=$consulta?></p>
+	<p align="center"><?=$texto?></p>
 </body>
 </html>

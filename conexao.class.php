@@ -11,7 +11,7 @@ class conexao{
 	}
 	public function query($query){
 		$con = mysqli_connect($this->host, $this->user, $this->pass, $this->banco);
-		$sql = mysqli_query($con, $query) or die("<b>Erro ao executar a query:</b> ".$query." -> ".mysqli_error());
+		$sql = mysqli_query($con, $query) or die("<b>Erro ao executar a query:</b> ".$query." -> ".mysqli_error($con));
 		return $sql;
 	}
 	public function fetch($sql){

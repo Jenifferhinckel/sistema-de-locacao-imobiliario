@@ -1,12 +1,15 @@
 <html>
     <head>
-        <title>Cadastrar Clientes</title>
+        <title>Cadastrar Proprietários
+        </title>
     </head>
     <body>
-        <h3>Cadastrar Clientes</h3>
+        <h3>Cadastrar Proprietários
+        </h3>
         <hr />
         <a href="../index.php">Sair</a>
-        <h4>Cadastrar Clientes</h4>
+        <h4>Cadastrar Proprietários
+        </h4>
         <form method="POST" action="registrar.php">
             <table>
                 <tr>
@@ -23,6 +26,10 @@
                 <tr>
                     <td align="right">*Telefone:</td>
                     <td><input type="text" name="telephone" /></td>
+                </tr>
+                <tr>
+                    <td align="right">*Dia do Repasse:</td>
+                    <td><input type="number" name="repasse_day" /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
