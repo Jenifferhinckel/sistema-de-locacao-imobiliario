@@ -1,19 +1,19 @@
 <?php
 require_once("proprietario.class.php");
 
-$nome = $_POST['nome'];
+$name = $_POST['name'];
 $email = $_POST['email'];
 $telephone = $_POST['telephone'];
 $repasse_day = $_POST['repasse_day'];
 
 $proprietario = new proprietario;
 $consulta="";
-if(empty($nome) || empty($email) || empty($telephone) || empty($repasse_day)){
+if(empty($name) || empty($email) || empty($telephone) || empty($repasse_day)){
 	$texto = "O(s) Campo(s) obrigatório(s) não foi (foram) preenchido(s)";
 }else{
-	$consulta = $proprietario->consulta();
+	$consulta = $proprietario->consulta($email);
     if(empty($consulta)){
-        $proprietario->setNome($nome);
+        $proprietario->setName($name);
         $proprietario->setEmail($email);
         $proprietario->setTelephone($telephone);
         $proprietario->setRepasseDay($repasse_day);
@@ -24,18 +24,7 @@ if(empty($nome) || empty($email) || empty($telephone) || empty($repasse_day)){
             $texto = "Erro ao tentar cadastrar o proprietário";
         }
     }else{
-        if($consulta->email != $email){
-            $proprietario->setNome($nome);
-            $proprietario->setEmail($email);
-            $proprietario->setTelephone($telephone);
-            $proprietario->setRepasseDay($repasse_day);
-            $sql = $proprietario->cadastrar_proprietario();
-            if($sql){
-                $texto = "Proprietário cadastrado com sucesso.";
-            }else{
-                $texto = "Erro ao tentar cadastrar o proprietário";
-            }
-        }
+        $texto = "Proprietário já cadastrado(a)!";
     }
 	
 }

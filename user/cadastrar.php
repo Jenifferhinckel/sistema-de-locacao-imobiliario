@@ -1,17 +1,17 @@
 <?php
 require_once("user.class.php");
 
-$nome = $_POST['nome'];
+$name = $_POST['name'];
 $senha = $_POST['senha'];
 
 $user = new user;
 
-if(empty($nome) || empty($senha)){
+if(empty($name) || empty($senha)){
 	$texto = "O(s) Campo(s) obrigatório(s) não foi (foram) preenchido(s)";
 }else{
-	$consulta = $user->consulta();
-	if($consulta->name != $nome){
-		$user->setNome($nome);
+	$consulta = $user->consulta($name);
+	if(empty($consulta)){
+		$user->setName($name);
 		$user->setSenha($senha);
 		$sql = $user->cadastrar_user();
 		if($sql){
@@ -19,8 +19,9 @@ if(empty($nome) || empty($senha)){
 		}else{
 			$texto = "Erro ao tentar cadastrar o usuário";
 		}
+	}else{
+		$texto = "Usuário(a) logado(a)!";
 	}
-	$texto = "Usuário logado";
 }
 ?>
 <html>

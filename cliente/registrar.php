@@ -1,18 +1,18 @@
 <?php
 require_once("cliente.class.php");
 
-$nome = $_POST['nome'];
+$name = $_POST['name'];
 $email = $_POST['email'];
 $telephone = $_POST['telephone'];
 
 $cliente = new cliente;
 
-if(empty($nome) || empty($email) || empty($telephone)){
+if(empty($name) || empty($email) || empty($telephone)){
 	$texto = "O(s) Campo(s) obrigatório(s) não foi (foram) preenchido(s)";
 }else{
 	$consulta = $cliente->consulta($email);
     if(empty($consulta)){
-        $cliente->setNome($nome);
+        $cliente->setName($name);
         $cliente->setEmail($email);
         $cliente->setTelephone($telephone);
         $sql = $cliente->cadastrar_cliente();
@@ -22,7 +22,7 @@ if(empty($nome) || empty($email) || empty($telephone)){
             $texto = "Erro ao tentar cadastrar o cliente";
         }
     }else{
-        $texto = "Cliente já cadastrado!";   
+        $texto = "Cliente já cadastrado(a)!";   
     }
 }
 ?>

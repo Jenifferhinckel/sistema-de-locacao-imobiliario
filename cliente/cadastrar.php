@@ -14,15 +14,15 @@
                 </tr>
                 <tr>
                     <td align="right">*Nome:</td>
-                    <td><input type="text" name="nome" /></td>
+                    <td><input type="text" name="name" required/></td>
                 </tr>
                 <tr>
                     <td align="right">*E-mail:</td>
-                    <td><input type="text" name="email" /></td>
+                    <td><input type="email" name="email" required/></td>
                 </tr>
                 <tr>
                     <td align="right">*Telefone:</td>
-                    <td><input type="text" name="telephone" /></td>
+                    <td><input type="text" name="telephone" required/></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
