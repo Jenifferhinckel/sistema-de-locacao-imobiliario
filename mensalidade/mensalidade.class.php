@@ -105,11 +105,8 @@ class mensalidade{
 						$discount = $this->aluguel - $new_aluguel; 
 						$mensalidade = $this->mensalidade - $discount;
 
-						$date = (new DateTime($this->start_date));
-						$newDate = $date->modify('+'.$i.' month');
-
 						$query = "INSERT INTO mensalidades VALUES(0, '".$this->contrato_id."', '".$mensalidade."', '".$this->repasse."',  '".$this->mensalidade_status."',
-						'".$this->repasse_status."', '".$newDate->format('Y-m-d')."')";
+						'".$this->repasse_status."', '".$date_end->format('Y-m-d')."')";
 						$sql = $this->conexao->query($query);
 					}
 				}else{
