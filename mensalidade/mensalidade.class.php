@@ -103,7 +103,7 @@ class mensalidade{
 						$aluguel_perDay = $this->aluguel/$qt_days_month;
 						$new_aluguel = $aluguel_perDay * $days_used;
 						$discount = $this->aluguel - $new_aluguel; 
-						$mensalidade = $mensalidade - $discount;
+						$mensalidade = $this->mensalidade - $discount;
 
 						$date = (new DateTime($this->start_date));
 						$newDate = $date->modify('+'.$i.' month');
