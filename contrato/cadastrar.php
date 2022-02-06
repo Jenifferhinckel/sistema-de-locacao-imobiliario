@@ -11,17 +11,17 @@
 ?>
 <script>
     var ajax = new XMLHttpRequest;
-        function find(address_id){
-            ajax.open("GET", "consulta.php?address_id="+address_id);
-            ajax.onreadystatechange = function(){
-                if(ajax.readyState == 4 && ajax.status == 200){
-                    var result = ajax.responseText;
-                    console.log(result);
-                    document.getElementById("id_proprietario").value = result;
-                }
+    function find(address_id){
+        ajax.open("GET", "consulta.php?address_id="+address_id);
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState == 4 && ajax.status == 200){
+                var result = JSON.parse(ajax.responseText);
+                document.getElementById("proprietario_id").value = result.id;
+                document.getElementById("proprietario_name").value = result.name;
             }
-            ajax.send(null);
         }
+        ajax.send(null);
+    }
 </script>
 <html>
     <head>
@@ -45,30 +45,31 @@
                 ?>
             </select>
             Proprietário:
-            <input type="text" id="proprietario_id" disabled>
+            <input type="hidden" id="proprietario_id" name="proprietario_id">
+            <input type="text" id="proprietario_name" name="proprietario_name" disabled>
             Selecionar Locatário:
-            <select name="cliente_id" id="cliente_id" onchange="find(this.value)" required>
+            <select name="cliente_id" id="cliente_id" required>
                 <option value="">Selecionar</option>
                 <?php
                     foreach($clientes as $key => $value){
                 ?>
-                    <option value="<?=$value[0]?>"><?=$value[2]?></option>
+                    <option value="<?=$value[0]?>"><?=$value[1]?> - <?=$value[2]?></option>
                 <?php   
                 }
                 ?>
             </select>
             Data Ínicio:
-                <input type="date" id="start_date" required>
+                <input type="date" name="start_date" required>
             Data Fim:
-                <input type="date" id="end_date" required>
-            Taxa de Administração:
-                <input type="text" id="taxa_admin" required>
+                <input type="date" name="end_date" required>
+            Taxa de Administração(%):
+                <input type="text" name="taxa_admin" required>
             Valor do Aluguel:
-                <input type="text" id="valor_aluguel" required>
+                <input type="text" name="valor_aluguel" required>
             Valor do Condomínio:
-                <input type="text" id="valor_condominio" required>
+                <input type="text" name="valor_condominio" required>
             Valor do IPTU:
-                <input type="text" id="valor_iptu" required>
+                <input type="text" name="valor_iptu" required>
             <input type="submit" value="Salvar">
         </form>
     </body>

@@ -24,7 +24,7 @@ if(empty($imovel) || empty($proprietario_id)){
             $texto = "Erro ao tentar cadastrar o imovel";
         }
     }else{
-        $texto = "Cliente já cadastrado!";
+        $texto = "Imovel já cadastrado!";
     }
 }
 ?>

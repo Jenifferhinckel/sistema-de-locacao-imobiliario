@@ -3,11 +3,16 @@
     $conexao = new conexao;
 
     $address_id = $_GET['address_id'];
-    $query = "SELECT proprietarios.name FROM imoveis 
+    $query = "SELECT proprietarios.id, proprietarios.name FROM imoveis 
     LEFT JOIN proprietarios ON imoveis.proprietario_id = proprietarios.id 
     WHERE imoveis.id ="."'$address_id'";
-    $proprietario_name = $conexao->query($query);
-    $proprietario_name = $proprietario_name->fetch_row();
-    // var_dump($proprietario_name);
-    return $proprietario_name[0];
+    $proprietario = $conexao->query($query);
+    $proprietario = $proprietario->fetch_row();
+    if(!empty($proprietario)){
+        $array = [
+            'id' => $proprietario[0],
+            'name' => $proprietario[1]
+        ];
+    }
+    echo json_encode($array);
 ?>

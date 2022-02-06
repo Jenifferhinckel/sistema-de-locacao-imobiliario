@@ -1,6 +1,6 @@
 <?php
 require_once("../conexao.class.php");
-class imovel{
+class contrato{
 	private $conexao;
 	private $imovel_id;
 	private $proprietario_id;
@@ -74,11 +74,16 @@ class imovel{
 		'".$this->start_date."','".$this->end_date."' ,'".$this->taxa_admin."','".$this->valor_aluguel."', '".$this->valor_condominio."',
 		'".$this->valor_iptu."')";
 		$sql = $this->conexao->query($query);
-		
+		if($sql){
+			$query_consulta = "SELECT * FROM contratos WHERE imovel_id="."'$this->imovel_id'";
+			$sql_consulta = $this->conexao->query($query_consulta);
+			$result = $this->conexao->fetch($sql_consulta);
+			return $result->id;
+		}
 		return $sql;
 	}
 	public function consulta($imovel_id){
-		$query = "SELECT * FROM contrato WHERE imovel_id = ".$imovel_id;
+		$query = "SELECT * FROM contratos WHERE imovel_id="."'$imovel_id'";
 		$sql = $this->conexao->query($query);
 		$result = $this->conexao->fetch($sql);
 		return $result;

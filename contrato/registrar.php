@@ -27,17 +27,30 @@ if(empty($imovel_id) || empty($cliente_id) || empty($start_date) || empty($end_d
         $contrato->setValorAluguel($valor_aluguel);
         $contrato->setValorCondominio($valor_condominio);
         $contrato->setValorIptu($valor_iptu);
-        $sql = $contrato->cadastrar_contrato();
-        if($sql){
+        $contrato_id_criado = $contrato->cadastrar_contrato();
+        if(!empty($contrato_id_criado)){
             $texto = "Contrato cadastrado com sucesso.";
+            $link = 'success';
         }else{
             $texto = "Erro ao tentar cadastrar contrato";
+            $link = 'error';
         }
     }else{
         $texto = "Imovel já cadastrado!";
+        $link = 'have';
     }
 }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        link = document.getElementById("link").value;
+        if(link == 'success'){
+            alert("Contrato cadastrado com sucesso");
+            window.location.href = "../mensalidade/consulta.php?id=<?=$contrato_id_criado?>";
+        }
+    });
+</script>
 <html>
 <head>
 	<title>Sistema de Gestão de imobiliária</title>
@@ -52,6 +65,11 @@ if(empty($imovel_id) || empty($cliente_id) || empty($start_date) || empty($end_d
 	<a href="cadastrar.php">Cadastrar Contratos</a>
 	</p>
 	<hr />
-	<p align="center"><?=$texto?></p>
+	<p align="center"><?=$texto?>
+        <input type="hidden" id="link" value=<?=$link?>>
+        <?php if ($link=='have'): ?>
+            <a href="../mensalidade/consulta.php?id=<?=$imovel_id?>">Ver mensalidade</a>
+        <?php endif ?>
+    </p>
 </body>
 </html>
