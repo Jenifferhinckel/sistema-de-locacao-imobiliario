@@ -17,20 +17,39 @@
     $conexao = new conexao;
     $query = "SELECT * FROM proprietarios";
     $proprietarios = $conexao->query($query);
-    $proprietarios = $proprietarios->fetch_all();
+    $proprietarios = mysqli_fetch_all($proprietarios, MYSQLI_ASSOC);
 ?>
-<html>
-    <head>
-        <title>Cadastrar Imovel</title>
-    </head>
-    <body>
-        <h3>Cadastrar Imovel</h3>
-        <hr />
-        <a href="../index.php">Sair</a>
-        <h4>Cadastrar Imovel</h4>
-        <form method="POST" action="registrar.php">
-            Selecionar Endereço:
-            <select name="imoveis" id="imoveis">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sistema de gestão de locação para imobiliárias</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Vista</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="../index.php">Home</a>
+            <a class="nav-link active" href="cadastrar.php">Cadastrar Imóvel</a>
+            <a class="nav-link" href="../cliente/cadastrar.php">Cadastrar cliente</a>
+            <a class="nav-link" href="../proprietario/cadastrar.php">Cadastrar proprietário</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover" style="margin-left:20%">
+        <form class="form-signin" method="POST" action="registrar.php" style="max-width:330px">
+            <h1 class="h3 mb-3 font-weight-normal">Cadastrar Imóvel</h1>
+            <label for="imoveis" class="float-left">Selecionar Endereço:</label>
+            <select class="custom-select d-block w-100" id="imoveis" name="imoveis" required>
                 <option value="">Selecionar</option>
                 <?php
                     foreach($resultAddress as $key => $value){
@@ -40,18 +59,26 @@
                 }
                 ?>
             </select>
-            Selecionar Proprietários:
-            <select name="proprietarios" id="proprietarios">
+            <label for="proprietarios" class="float-left">Selecionar Proprietários:</label>
+            <select class="custom-select d-block w-100 my-2" id="proprietarios" name="proprietarios" required>
                 <option value="">Selecionar</option>
                 <?php
                     foreach($proprietarios as $key => $value){
                 ?>
-                    <option value="<?=$value[0]?>"><?=$value[1]?></option>
+                    <option value="<?=$value['id']?>"><?=$value['name']?></option>
                 <?php   
                 }
                 ?>
             </select>
-            <input type="submit" value="Salvar">
+            <button class="btn btn-lg btn-primary btn-block" style="background-color:#55b5a6; border-color:#55b5a6;" type="submit">Cadastrar</button>
         </form>
-    </body>
+      </main>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Vista @2022</p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  </body>
 </html>

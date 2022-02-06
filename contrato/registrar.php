@@ -36,6 +36,7 @@ if(empty($imovel_id) || empty($cliente_id) || empty($start_date) || empty($end_d
             $link = 'error';
         }
     }else{
+        $contrato_id_criado = $consulta->id;
         $texto = "Imovel já cadastrado!";
         $link = 'have';
     }
@@ -51,25 +52,46 @@ if(empty($imovel_id) || empty($cliente_id) || empty($start_date) || empty($end_d
         }
     });
 </script>
-<html>
-<head>
-	<title>Sistema de Gestão de imobiliária</title>
-</head>
-<body>
-	<h3 align="center">Sistema de Gestão de imobiliária</h3>
-	<hr />
-	<p align="center">
-	<a href="../cliente/cadastrar.php">Cadastrar Clientes</a>
-	<a href="../proprietario/cadastrar.php">Cadastrar Proprietários</a>
-	<a href="../imovel/cadastrar.php">Cadastrar Imovéis</a>
-	<a href="cadastrar.php">Cadastrar Contratos</a>
-	</p>
-	<hr />
-	<p align="center"><?=$texto?>
-        <input type="hidden" id="link" value=<?=$link?>>
-        <?php if ($link=='have'): ?>
-            <a href="../mensalidade/consulta.php?id=<?=$imovel_id?>">Ver mensalidade</a>
-        <?php endif ?>
-    </p>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sistema de gestão de locação para imobiliárias</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Vista</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="../index.php">Home</a>
+            <a class="nav-link active" href="../cliente/cadastrar.php">Cadastrar cliente</a>
+            <a class="nav-link" href="../proprietario/cadastrar.php">Cadastrar proprietario</a>
+            <a class="nav-link" href="../imovel/cadastrar.php">Cadastrar imóvel</a>
+          </nav>
+        </div>
+      </header>
+      <main role="main" class="inner cover" style="margin-left:20%">
+            <h5 style="margin-right:25%"><?=$texto?></h5>
+            <p style="margin-right:25%"><?=$texto?>
+                <input type="hidden" id="link" value=<?=$link?>>
+                <?php if ($link=='have'): ?>
+                    <a href="../mensalidade/consulta.php?id=<?=$contrato_id_criado?>">Ver mensalidade</a>
+                <?php endif ?>
+            </p>
+      </main>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Vista @2022</p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  </body>
 </html>
