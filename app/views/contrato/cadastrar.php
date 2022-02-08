@@ -1,5 +1,5 @@
 <?php
-    require_once("../conexao.class.php");
+    require_once("../../lib/conexao.php");
    
     $conexao = new conexao;
     $query = "SELECT * FROM imoveis";
@@ -33,8 +33,8 @@
     <meta name="author" content="">
 
     <title>Sistema de gestão de locação para imobiliárias</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/css/index.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
@@ -42,16 +42,16 @@
         <div class="inner">
           <h3 class="masthead-brand">Vista</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="../index.php">Home</a>
+            <a class="nav-link" href="../../index.php">Home</a>
             <a class="nav-link active" href="cadastrar.php">Cadastrar contrato</a>
-            <a class="nav-link" href="../imovel/cadastrar.php">Cadastrar Imóvel</a>
-            <a class="nav-link" href="../mensalidade/buscar.php">Mensalidade</a>
+            <a class="nav-link" href="../../views/imovel/cadastrar.php">Cadastrar Imóvel</a>
+            <a class="nav-link" href="../../views/mensalidade/buscar.php">Mensalidade</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="inner cover" style="margin-left:10%; margin-right:10%">
-        <form class="form-signin" method="POST" action="registrar.php" style="max-width:100%">
+        <form class="form-signin" method="POST" action="../../controllers/contrato/contratoController.php" style="max-width:100%">
             <h5 class="mb-3 font-weight-normal pt-3">Cadastrar Contrato</h5>
             <div class="row">
               <div class="col-md-6 mb-1">

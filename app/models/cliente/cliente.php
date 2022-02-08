@@ -1,12 +1,11 @@
 <?php
-require_once("../conexao.class.php");
-class proprietario{
+require_once("../../lib/conexao.php");
+class cliente{
 	private $conexao;
 	private $id;
 	private $name;
 	private $email;
 	private $telephone;
-	private $repasse_day;
 	
 	public function __construct(){
 		$this->conexao = new conexao;
@@ -23,9 +22,6 @@ class proprietario{
 	function setTelephone($telephone){
 		$this->telephone = $telephone;
 	}
-	function setRepasseDay($repasse_day){
-		$this->repasse_day = $repasse_day;
-	}
 	function getId(){
 		return $this->id;
 	}
@@ -38,17 +34,14 @@ class proprietario{
 	function getTelephone(){
 		return $this->telephone;
 	}
-	function getRepasseDay(){
-		return $this->repasse_day;
-	}
-	public function cadastrar_proprietario(){
-		$query = "INSERT INTO proprietarios VALUES(0, '".$this->name."', '".$this->email."', '".$this->telephone."', '".$this->repasse_day."')";
+	public function cadastrar_cliente(){
+		$query = "INSERT INTO clientes VALUES(0, '".$this->name."', '".$this->email."', '".$this->telephone."')";
 		$sql = $this->conexao->query($query);
 		
 		return $sql;
 	}
 	public function consulta($email){
-		$query = "SELECT * FROM proprietarios WHERE email="."'$email'";
+		$query = "SELECT * FROM clientes WHERE email="."'$email'";
 		$sql = $this->conexao->query($query);
 		$result = $this->conexao->fetch($sql);
 		return $result;

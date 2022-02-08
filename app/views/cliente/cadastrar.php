@@ -7,8 +7,8 @@
     <meta name="author" content="">
 
     <title>Sistema de gestão de locação para imobiliárias</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/css/index.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
@@ -16,7 +16,7 @@
         <div class="inner">
           <h3 class="masthead-brand">Vista</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="../index.php">Home</a>
+            <a class="nav-link" href="../../index.php">Home</a>
             <a class="nav-link active" href="../cliente/cadastrar.php">Cadastrar cliente</a>
             <a class="nav-link" href="../proprietario/cadastrar.php">Cadastrar proprietário</a>
           </nav>
@@ -24,7 +24,7 @@
       </header>
 
       <main role="main" class="inner cover" style="margin-left:20%">
-        <form class="form-signin" method="POST" action="registrar.php" style="max-width:330px">
+        <form class="form-signin" method="POST" action="../../controllers/cliente/clienteController.php" style="max-width:330px">
             <h1 class="h3 mb-3 font-weight-normal">Cadastrar cliente</h1>
             <input type="text" name="name" class="form-control my-2" placeholder="Nome" required>
             <input type="email" name="email" class="form-control my-2" placeholder="E-mail" required>

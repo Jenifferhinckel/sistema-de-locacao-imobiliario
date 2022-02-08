@@ -1,5 +1,5 @@
 <?php
-require_once("../conexao.class.php");
+require_once("../../lib/conexao.php");
 class mensalidade{
 	private $conexao;
     private $contrato_id;

@@ -1,5 +1,5 @@
 <?php
-require_once("imovel.class.php");
+require_once("../../models/imovel/imovel.php");
 
 $imovel = $_POST['imoveis'];
 $imovelDetails = explode("-",$imovel);
@@ -37,8 +37,8 @@ if(empty($imovel) || empty($proprietario_id)){
     <meta name="author" content="">
 
     <title>Sistema de gestão de locação para imobiliárias</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/css/index.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
@@ -46,10 +46,10 @@ if(empty($imovel) || empty($proprietario_id)){
         <div class="inner">
           <h3 class="masthead-brand">Vista</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="../index.php">Home</a>
-            <a class="nav-link active" href="../imovel/cadastrar.php">Cadastrar imóvel</a>
-            <a class="nav-link" href="../contrato/cadastrar.php">Cadastrar contrato</a>
-            <a class="nav-link" href="../cliente/cadastrar.php">Cadastrar cliente</a>
+            <a class="nav-link" href="../../index.php">Home</a>
+            <a class="nav-link active" href="../../views/imovel/cadastrar.php">Cadastrar imóvel</a>
+            <a class="nav-link" href="../../views/contrato/cadastrar.php">Cadastrar contrato</a>
+            <a class="nav-link" href="../../views/cliente/cadastrar.php">Cadastrar cliente</a>
           </nav>
         </div>
       </header>

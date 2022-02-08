@@ -7,8 +7,8 @@
     <meta name="author" content="">
 
     <title>Sistema de gestão de locação para imobiliárias</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/index.css" rel="stylesheet">
   </head>
 
   <body class="text-center">
@@ -18,13 +18,13 @@
           <h3 class="masthead-brand">Vista</h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="proprietario/cadastrar.php">Cadastrar proprietário</a>
+            <a class="nav-link" href="views/proprietario/cadastrar.php">Cadastrar proprietário</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="inner cover">
-        <img src="images/vista.png">
+        <img src="public/images/vista.png">
         </br></br>
         <h1 class="cover-heading">Sistema de gestão de locação para imobiliárias</h1>
       </main>

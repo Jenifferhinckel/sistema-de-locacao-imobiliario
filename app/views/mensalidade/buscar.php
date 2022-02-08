@@ -1,5 +1,5 @@
 <?php
-    require_once("../conexao.class.php");
+    require_once("../../lib/conexao.php");
     
     $conexao = new conexao;
     $query = "SELECT c.id, p.name FROM clientes as p JOIN contratos as c on p.id = c.cliente_id";
@@ -10,7 +10,7 @@
     var ajax = new XMLHttpRequest;
     function buscar(){
         var contract_id = document.getElementById("contract_id").value;
-        window.location.href = "consulta.php?id="+contract_id;
+        window.location.href = "../../controllers/mensalidade/consulta.php?id="+contract_id;
     }
 </script>
 <!doctype html>
@@ -22,8 +22,8 @@
     <meta name="author" content="">
 
     <title>Sistema de gestão de locação para imobiliárias</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/css/index.css" rel="stylesheet">
   </head>
   <body class="text-center">
     <div class="cover-container d-flex h-100 w-100 p-3 mx-auto flex-column">
@@ -31,7 +31,7 @@
         <div class="inner">
           <h3 class="masthead-brand">Vista</h3>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link" href="../index.php">Home</a>
+            <a class="nav-link" href="../../index.php">Home</a>
             <a class="nav-link active" href="#">Mensalidade</a>
           </nav>
         </div>

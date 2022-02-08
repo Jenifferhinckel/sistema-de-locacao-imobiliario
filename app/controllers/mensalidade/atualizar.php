@@ -1,6 +1,6 @@
 <?php
-require_once("../conexao.class.php");
-require_once("mensalidade.class.php");
+require_once("../../lib/conexao.php");
+require_once("../../models/mensalidade/mensalidade.php");
 $id = $_GET['id'];
 $name = $_GET['name'];
 $contract_id = $_GET['contract_id'];
@@ -32,10 +32,10 @@ if(isset($id) && isset($name)){
 	<h3 align="center">Sistema de Gestão de imobiliária</h3>
 	<hr />
 	<p align="center">
-	<a href="../cliente/cadastrar.php">Cadastrar Clientes</a>
-	<a href="../proprietario/cadastrar.php">Cadastrar Proprietários</a>
-	<a href="../imovel/cadastrar.php">Cadastrar Imovéis</a>
-	<a href="../contrato/cadastrar.php">Cadastrar Contratos</a>
+	<a href="../../views/cliente/cadastrar.php">Cadastrar Clientes</a>
+	<a href="../../views/proprietario/cadastrar.php">Cadastrar Proprietários</a>
+	<a href="../../views/imovel/cadastrar.php">Cadastrar Imovéis</a>
+	<a href="../../views/contrato/cadastrar.php">Cadastrar Contratos</a>
 	</p>
 	<hr />
     <p align="center"><?=$texto?></p>
